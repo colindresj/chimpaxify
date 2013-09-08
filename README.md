@@ -1,9 +1,7 @@
 #Chimpaxify
-***
 Chimpaxify is a tiny (1kb minified) jQuery plugin that uses Ajax to submit your MailChimp forms. 
 
 ##How to Use
-***
 Simply include Chimpaxify on your page after jQuery (required):
 	
 	<script src="jquery.js"></script>
@@ -22,9 +20,6 @@ A css stylesheet and loading gif are included. Add the stylesheet like so:
 Make sure you properly reference the location of the loading gif in your styles.
 
 ##Options
-***
-Chimpaxify comes with a few options. 
-
 <table>
 	<thead>
 		<tr>
