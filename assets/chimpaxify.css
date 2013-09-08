@@ -1,0 +1,15 @@
+#chimpaxifyMessage {
+	display: none;
+}
+.chimpaxifySuccess {
+	color: #1acb82;
+	font-family: inherit;
+}
+.chimpaxifyError {
+	color: #cc3333;
+	font-family: inherit;
+}
+.chimpaxifyLoading {
+	/* this loader can be replaced, or removed all together in the options */
+	background: url('loader.gif') no-repeat center bottom;
+}
