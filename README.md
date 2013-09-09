@@ -32,7 +32,7 @@ Make sure you properly reference the location of the loading gif in your styles.
 	<tbody>
 		<tr>
 			<td>url</td>
-			<td>String</td>
+			<td>string</td>
 			<td>Your form's action attribute</td>
 			<td>Your MailChimp list URL</td>
 		</tr>
