@@ -1,22 +1,30 @@
 #Chimpaxify
+[![Build Status](https://travis-ci.org/corporadobob/chimpaxify.png?branch=master)](https://travis-ci.org/corporadobob/chimpaxify)
+
 Chimpaxify is a tiny (~1kb minified) jQuery plugin that uses Ajax to submit your MailChimp forms.
 
 ##How to Use
 Simply include Chimpaxify (located in the lib/ directory) on your page after jQuery:
 
-
-    <script src="jquery.js"></script>
-    <script src="chimpaxify.min.js"></script>
+```html
+<script src="jquery.js"></script>
+<script src="chimpaxify.min.js"></script>
+```
 
 Download any of the forms from MailChimp, or create your own. If you decide to create your own form, make sure to have an input with type set to email. Then, simply call Chimpaxify onto your form using its ID selector:
 
-	$(function() {
-		$('#foo').chimpaxify();
-	});
+```js
+$(function() {
+  $('#foo').chimpaxify();
+});
+```
+	
 
 A css stylesheet and loading gif are included. Add the stylesheet like so:
 
-	<link rel="stylesheet" href="chimpaxify.css">
+```html
+<link rel="stylesheet" href="chimpaxify.css">
+```
 
 Make sure you properly reference the location of the loading gif in your styles.
 
