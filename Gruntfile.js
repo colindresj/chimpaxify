@@ -30,6 +30,13 @@ module.exports = function(grunt) {
         vendor: ['vendor/jquery/jquery.js', 'vendor/jasmine-jquery/jasmine-jquery.js'],
         styles: 'lib/**/*.css'
       }
+    },
+    uglify: {
+      dist: {
+        files: {
+          'lib/chimpaxify.min.js': 'lib/chimpaxify.js'
+        }
+      }
     }
   });
 
@@ -37,6 +44,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('test', ['jshint', 'jasmine']);
   grunt.registerTask('default', ['jshint', 'copy', 'jasmine']);
