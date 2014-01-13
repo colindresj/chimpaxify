@@ -7,6 +7,9 @@ module.exports = function(grunt) {
       tasks: ['test']
     },
     jshint: {
+      options: {
+        ignores: ['lib/**/*.min.js']
+      },
       all: ['Gruntfile.js', 'lib/**/*.js', 'spec/**/*.js']
     },
     copy: {
@@ -48,5 +51,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'jasmine']);
   grunt.registerTask('default', ['jshint', 'copy', 'jasmine']);
+  grunt.registerTask('publish', ['default', 'uglify']);
 
 };
