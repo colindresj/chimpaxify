@@ -1,6 +1,7 @@
 {
   "name": "chimpaxify",
   "version": "0.3.1",
+  "main": "lib/",
   "homepage": "https://github.com/corporadobob/chimpaxify",
   "authors": [
     "JC <jorge.e.colindres@gmail.com>"
