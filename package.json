@@ -1,0 +1,30 @@
+{
+  "name": "chimpaxify",
+  "version": "0.3.1",
+  "description": "a simple jquery plugin for submitting mailchimp forms with ajax",
+  "homepage": "https://github.com/corporadobob/chimpaxify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corporadobob/chimpaxify.git"
+  },
+  "author": {
+    "name": "Jorge Colindres",
+    "email": "jorge.e.colindres@gmail.com",
+    "url": "http://colindres.me"
+  },
+  "licenses": [
+    "MIT"
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}
