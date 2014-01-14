@@ -4,7 +4,7 @@
 Chimpaxify is a tiny (~1kb minified) jQuery plugin that uses Ajax to submit your MailChimp forms.
 
 ##How to Use
-Simply include Chimpaxify (located in the lib/ directory) on your page after jQuery:
+Simply include Chimpaxify (located in the dist/ directory) on your page after jQuery:
 
 ```html
 <script src="jquery.js"></script>

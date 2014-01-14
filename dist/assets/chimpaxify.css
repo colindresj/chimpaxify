@@ -1,0 +1,16 @@
+#chimpaxifyMessage {
+  display: none;
+}
+.chimpaxifySuccess {
+  color: #1acb82;
+  font-family: inherit;
+}
+.chimpaxifyError {
+  color: #cc3333;
+  font-family: inherit;
+}
+.chimpaxifyLoading {
+  /* This loader can be replaced, or removed all together in the options. */
+  /* Make sure to set the correct path and adjust positioning according to your layout. */
+  background: url('loader.gif') no-repeat center bottom;
+}
