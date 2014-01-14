@@ -54,11 +54,21 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      src: 'src/**/*.js',
       options: {
         specs: 'spec/**/.spec.js',
-        vendor: ['vendor/jquery/jquery.js', 'vendor/jasmine-jquery/jasmine-jquery.js'],
         styles: 'dist/**/*.css'
+      },
+      jQuery_20: {
+        src: 'src/**/*.js',
+        options: {
+          vendor: ['vendor/jquery/jquery.js', 'vendor/jasmine-jquery/jasmine-jquery.js']
+        }
+      },
+      jQuery_19: {
+        src: 'src/**/*.js',
+        options: {
+          vendor: ['http://code.jquery.com/jquery-1.9.0.js', 'vendor/jasmine-jquery/jasmine-jquery.js']
+        }
       }
     },
     uglify: {
