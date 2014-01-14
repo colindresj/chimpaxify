@@ -2,15 +2,30 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+      ' Licensed <%= _.map(pkg.licenses) %> */\n\n',
     watch: {
-      files: ['spec/**/.spec.js'],
+      files: ['spec/**/.spec.js', 'src/**/*.js'],
       tasks: ['test']
     },
-    jshint: {
+    clean: {
+      files: ['dist']
+    },
+    concat: {
       options: {
-        ignores: ['lib/**/*.min.js']
+        banner: '<%= banner %>',
+        stripBanners: true
       },
-      all: ['Gruntfile.js', 'lib/**/*.js', 'spec/**/*.js']
+      dist: {
+        src: ['src/<%= pkg.name %>.js'],
+        dest: 'dist/<%= pkg.name %>.js'
+      },
+    },
+    jshint: {
+      all: ['Gruntfile.js', 'src/**/*.js', 'spec/**/*.js']
     },
     copy: {
       vendors: {
@@ -24,25 +39,39 @@ module.exports = function(grunt) {
             dest: 'vendor/jasmine-jquery/jasmine-jquery.js'
           }
         ]
+      },
+      source: {
+        files: [
+          {
+            src: 'src/assets/<%= pkg.name %>.css',
+            dest: 'dist/assets/<%= pkg.name %>.css'
+          },
+          {
+            src: 'src/assets/loader.gif',
+            dest: 'dist/assets/loader.gif'
+          }
+        ]
       }
     },
     jasmine: {
-      src: 'lib/**/*.js',
+      src: 'src/**/*.js',
       options: {
         specs: 'spec/**/.spec.js',
         vendor: ['vendor/jquery/jquery.js', 'vendor/jasmine-jquery/jasmine-jquery.js'],
-        styles: 'lib/**/*.css'
+        styles: 'dist/**/*.css'
       }
     },
     uglify: {
       dist: {
         files: {
-          'lib/chimpaxify.min.js': 'lib/chimpaxify.js'
+          'dist/<%= pkg.name %>.min.js': '<%= concat.dist.dest %>'
         }
       }
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -50,7 +79,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('test', ['jshint', 'jasmine']);
-  grunt.registerTask('default', ['jshint', 'copy', 'jasmine']);
-  grunt.registerTask('publish', ['default', 'uglify']);
+  grunt.registerTask('default', ['test', 'clean', 'concat', 'uglify', 'copy']);
 
 };
