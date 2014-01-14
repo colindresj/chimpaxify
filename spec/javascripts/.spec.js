@@ -45,8 +45,8 @@ describe('chimpaxify', function(){
 
       beforeEach(function(){
         Spec.spyEvent = spyOnEvent(Spec.$form, 'submit');
-        Spec.$form.submit();
         spyOn($, 'ajax');
+        Spec.$form.submit();
       });
 
       it('should prevent the default', function(){
@@ -55,6 +55,15 @@ describe('chimpaxify', function(){
 
       it('should make an ajax request', function(){
         expect($.ajax.mostRecentCall).toBeTruthy();
+      });
+
+      it('should fire the webhook', function(){
+
+        var callback = jasmine.createSpy();
+
+        Spec.$form.chimpaxify().on('callback', callback);
+        Spec.$form.submit();
+        expect(callback).not.toHaveBeenCalled();
       });
 
     });

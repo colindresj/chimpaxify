@@ -10,7 +10,8 @@
       speed: 'slow',
       easing: 'swing',
       loader: true,
-      successMessage: 'Success. A confirmation email has been sent your way.'
+      successMessage: 'Success. A confirmation email has been sent your way.',
+      successCallback: function() {}
     }, options);
 
     // adds the appropriate json formatting to the url
@@ -46,6 +47,8 @@
             $messageContainer.removeClass('chimpaxifyError')
                       .addClass('chimpaxifySuccess')
                       .slideDown(defaults.speed, defaults.easing);
+
+            $form.trigger('callback');
           } else {
 
             // on error, show the error message with proper styling and animation
@@ -60,7 +63,7 @@
                   .slideUp(defaults.speed, defaults.easing);
         },
         error: function() {
-          console.log('There seems to be a problem with your Chimpaxify request. Make sure your options are correct.');
+          return false;
         },
         beforeSend: function() {
           if (defaults.loader) {
