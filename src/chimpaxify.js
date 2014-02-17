@@ -1,7 +1,9 @@
 (function($) {
   $.fn.chimpaxify = function(options) {
-    var $form = this;
-    var defaults = $.extend({
+    var $form, defaults, jsonUrl, $messageContainer;
+
+    $form = this;
+    defaults = $.extend({
 
       // takes the default Mailchimp form url from the action attribute
       url: $form.attr('action'),
@@ -15,18 +17,16 @@
     }, options);
 
     // adds the appropriate json formatting to the url
-    var jsonUrl = defaults.url.replace('/post?', '/post-json?') + '&c=?';
+    jsonUrl = defaults.url.replace('/post?', '/post-json?') + '&c=?';
 
     // setting up the message container
-    var $messageContainer = $('<div id="chimpaxifyMessage"></div>');
+    $messageContainer = $('<div id="chimpaxifyMessage"></div>');
 
     // adds the required EMAIL name attribute to the email input
-    $form.find('input[type=email]').attr('name', 'EMAIL');
+    $form.children('input[type=email]').attr('name', 'EMAIL');
     $form.append($messageContainer);
 
     $form.on('submit', function(e) {
-
-      // prevent the form from refreshing the page -- it's AJAX after all!
       e.preventDefault();
 
       // grab the data from the form and serialize it
@@ -45,9 +45,10 @@
             // on success, show the success message with proper styling and animation
             $messageContainer.html(defaults.successMessage);
             $messageContainer.removeClass('chimpaxifyError')
-                      .addClass('chimpaxifySuccess')
-                      .slideDown(defaults.speed, defaults.easing);
+                             .addClass('chimpaxifySuccess')
+                             .slideDown(defaults.speed, defaults.easing);
 
+            // trigger the plugin's callback
             $form.trigger('callback');
           } else {
 
@@ -56,11 +57,11 @@
             // server so it all shows up nicely as text
             $messageContainer.html(response.msg.replace(/\d -/, ''));
             $messageContainer.removeClass('chimpaxifySuccess')
-                      .addClass('chimpaxifyError')
-                      .slideDown(defaults.speed, defaults.easing);
+                             .addClass('chimpaxifyError')
+                             .slideDown(defaults.speed, defaults.easing);
           }
           $messageContainer.delay(defaults.delay)
-                  .slideUp(defaults.speed, defaults.easing);
+                           .slideUp(defaults.speed, defaults.easing);
         },
         error: function() {
           return false;
@@ -77,6 +78,6 @@
         }
       });
     });
-  return this;
+  return $form;
   };
 })(jQuery);

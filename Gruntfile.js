@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.map(pkg.licenses) %> */\n\n',
+      ' Licensed <%= _.pluck(pkg.licenses, "type") %> */\n\n',
     watch: {
       files: ['spec/**/.spec.js', 'src/**/*.js'],
       tasks: ['test']
