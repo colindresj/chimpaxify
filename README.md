@@ -92,11 +92,11 @@ Make sure you properly reference the location of the loading gif in your styles.
 ##Success Callback
 Chimpaxify can trigger a success callback that gives you added functionality for defining what occurs when a new contact has been added to your Mailchimp list.
 
-To fire a success callback, you just have to set an event listener for 'callback', which is a custom event triggered by your form whenever a post is successfully made. Since Chimpaxify returns your form element, you can keep this concise by chaining .on to the end of the Chimpaxify method.
+To fire a success callback, you just have to set an event listener for 'chimpaxify:callback', which is a custom event triggered by your form whenever a post is successfully made. Since Chimpaxify returns your form element, you can keep this concise by chaining .on to the end of the Chimpaxify method.
 
 ```js
 $(function() {
-  $('#foo').chimpaxify().on('callback', function(){
+  $('#foo').chimpaxify().on('chimpaxify:callback', function(){
     // your code here
   });
 });

@@ -49,7 +49,7 @@
                              .slideDown(defaults.speed, defaults.easing);
 
             // trigger the plugin's callback
-            $form.trigger('callback');
+            $form.trigger('chimpaxify:callback');
           } else {
 
             // on error, show the error message with proper styling and animation

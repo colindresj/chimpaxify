@@ -1,4 +1,4 @@
-/*! chimpaxify - v0.3.2 - 2014-02-17
+/*! chimpaxify - v0.3.2 - 2014-03-01
 * https://github.com/corporadobob/chimpaxify
 * Copyright (c) 2014 JC; Licensed MIT */
 
@@ -53,7 +53,7 @@
                              .slideDown(defaults.speed, defaults.easing);
 
             // trigger the plugin's callback
-            $form.trigger('callback');
+            $form.trigger('chimpaxify:callback');
           } else {
 
             // on error, show the error message with proper styling and animation
