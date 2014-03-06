@@ -9,6 +9,11 @@
     <!-- Required for browser reporter -->
     <div id="mocha"></div>
 
+    <form id="testForm" action="#" method="post" style="visibility:hidden">
+      <input type="email">
+      <input type="submit">
+    </form>
+
     <!-- mocha -->
     <script src="../bower_components/mocha/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
@@ -33,6 +38,10 @@
         // Setup chai
         var expect = chai.expect;
     </script>
+
+    <script src="sinon.js"></script>
+
+    <script src="../bower_components/sinon-chai/lib/sinon-chai.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Include anything you want to test -->
     <script src="../src/chimpaxify.js" type="text/javascript" charset="utf-8"></script>

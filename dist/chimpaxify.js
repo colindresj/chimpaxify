@@ -1,4 +1,4 @@
-/*! chimpaxify - v0.3.2 - 2014-03-05
+/*! chimpaxify - v0.3.2 - 2014-03-06
 * https://github.com/corporadobob/chimpaxify
 * Copyright (c) 2014 JC; Licensed MIT */
 
