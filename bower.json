@@ -1,13 +1,12 @@
 {
   "name": "chimpaxify",
   "version": "0.3.1",
-  "main": "lib/",
+  "main": "lib/chimpaxify.js",
   "homepage": "https://github.com/corporadobob/chimpaxify",
   "authors": [
     "JC <jorge.e.colindres@gmail.com>"
   ],
   "description": "a simple jquery plugin for submitting mailchimp forms with ajax",
-  "main": "lib/chimpaxify.js",
   "keywords": [
     "jquery",
     "ajax"
@@ -24,6 +23,9 @@
     "jquery": "~2.0.3"
   },
   "devDependencies": {
-    "jasmine-jquery": "~1.7.0"
+    "jasmine-jquery": "~1.7.0",
+    "mocha": "~1.17.1",
+    "chai-jquery": "~1.2.1",
+    "chai": "~1.9.0"
   }
 }

@@ -34,10 +34,6 @@ module.exports = function(grunt) {
           {
             src: 'bower_components/jquery/jquery.js',
             dest: 'vendor/jquery/jquery.js'
-          },
-          {
-            src: 'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
-            dest: 'vendor/jasmine-jquery/jasmine-jquery.js'
           }
         ]
       },
@@ -54,22 +50,13 @@ module.exports = function(grunt) {
         ]
       }
     },
-    jasmine: {
+    mocha: {
       options: {
-        specs: 'spec/**/.spec.js',
-        styles: 'dist/**/*.css'
+        reporter: "Spec",
+        run: true
       },
-      jQuery_20: {
-        src: 'src/**/*.js',
-        options: {
-          vendor: ['vendor/jquery/jquery.js', 'vendor/jasmine-jquery/jasmine-jquery.js']
-        }
-      },
-      jQuery_19: {
-        src: 'src/**/*.js',
-        options: {
-          vendor: ['http://code.jquery.com/jquery-1.9.0.js', 'vendor/jasmine-jquery/jasmine-jquery.js']
-        }
+      chimp: {
+        src: ['tests/**/*.html']
       }
     },
     uglify: {
@@ -86,10 +73,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('test', ['jshint', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'mocha']);
   grunt.registerTask('default', ['test', 'clean', 'concat', 'uglify', 'copy']);
 
 };

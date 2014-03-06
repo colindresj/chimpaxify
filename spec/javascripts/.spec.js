@@ -1,21 +1,20 @@
-
 describe('chimpaxify', function(){
 
-  var Spec = Spec || {};
+  var $form;
 
   beforeEach(function(){
     loadFixtures('chimpaxify.html');
-    Spec.$form = $('#test-form');
+    $form = $('#test-form');
   });
 
   it('should be chainable', function(){
-    Spec.$form.chimpaxify().addClass('chained');
-    expect(Spec.$form.hasClass('chained')).toBeTruthy();
+    $form.chimpaxify().addClass('chained');
+    expect($form.hasClass('chained')).toBeTruthy();
   });
 
   it('should be able to override its default options', function () {
     expect(
-      Spec.$form.chimpaxify({
+      $form.chimpaxify({
         url: 'https://google.com/',
         timeOut: 1000,
         delay: 2000,
@@ -30,43 +29,31 @@ describe('chimpaxify', function(){
   describe('when calling the plugin', function(){
 
     beforeEach(function(){
-      Spec.$form.chimpaxify();
+      $form.chimpaxify();
     });
 
     it('should add the required EMAIL name attribute to the email input', function(){
-      expect(Spec.$form.find('input[type=email]')).toHaveAttr('name', 'EMAIL');
+      expect($form.find('input[type=email]')).toHaveAttr('name', 'EMAIL');
     });
 
     it('should generate a message container', function(){
-      expect(Spec.$form).toContain('#chimpaxifyMessage');
+      expect($form).toContain('#chimpaxifyMessage');
     });
 
-    describe('when submiting the form', function(){
+  });
 
-      beforeEach(function(){
-        Spec.spyEvent = spyOnEvent(Spec.$form, 'submit');
-        spyOn($, 'ajax');
-        Spec.$form.submit();
-      });
+  describe('when submiting the form', function(){
 
-      it('should prevent the default', function(){
-        expect('submit').toHaveBeenPreventedOn(Spec.$form);
-      });
-
-      it('should make an ajax request', function(){
-        expect($.ajax.mostRecentCall).toBeTruthy();
-      });
-
-      it('should fire the webhook', function(){
-
-        var callback = jasmine.createSpy();
-
-        Spec.$form.chimpaxify().on('callback', callback);
-        Spec.$form.submit();
-        expect(callback).not.toHaveBeenCalled();
-      });
-
+    it('should prevent the default', function(){
+      var spy = spyOnEvent($form, 'submit');
+      $form.chimpaxify();
+      expect('submit').not.toHaveBeenPrevented();
     });
+
+  });
+
+  describe('making a succesfull XHR', function(){
+
 
   });
 
