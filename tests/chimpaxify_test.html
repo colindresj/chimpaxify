@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Example Mocha Test</title>
-    <link rel="stylesheet" href="../bower_components/mocha/mocha.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="helpers/mocha.css" type="text/css" charset="utf-8" />
 </head>
 <body>
     <!-- Required for browser reporter -->
@@ -15,12 +15,12 @@
     </form>
 
     <!-- mocha -->
-    <script src="../bower_components/mocha/mocha.js" type="text/javascript" charset="utf-8"></script>
+    <script src="helpers/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         // This will be overridden by mocha-helper if you run with grunt
         mocha.setup('bdd');
     </script>
-    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="../vendor/jquery/jquery.js"></script>
 
     <!--
          IMPORTANT
@@ -31,17 +31,17 @@
     -->
 
     <!-- Include your assertion lib of choice -->
-    <script src="../bower_components/chai/chai.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../bower_components/chai-jquery/chai-jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="helpers/chai.js" type="text/javascript" charset="utf-8"></script>
+    <script src="helpers/chai-jquery.js" type="text/javascript" charset="utf-8"></script>
 
     <script type="text/javascript" charset="utf-8">
         // Setup chai
         var expect = chai.expect;
     </script>
 
-    <script src="sinon.js"></script>
+    <script src="helpers/sinon.js"></script>
 
-    <script src="../bower_components/sinon-chai/lib/sinon-chai.js" type="text/javascript" charset="utf-8"></script>
+    <script src="helpers/sinon-chai.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Include anything you want to test -->
     <script src="../src/chimpaxify.js" type="text/javascript" charset="utf-8"></script>
