@@ -55,7 +55,7 @@ describe('jQuery.chimpaxify', function() {
       beforeEach(function() {
         this.$form.chimpaxify({
           url: 'http://google.com/post?'
-        }).on('chimpaxify:callback', this.cb);
+        }).on('chimpaxify:success', this.cb);
 
         this.$form.submit();
       });
