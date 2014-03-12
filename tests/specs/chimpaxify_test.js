@@ -72,6 +72,7 @@ describe('jQuery.chimpaxify', function() {
       it('should trigger the callback', function(){
         expect(this.cb).to.have.been.called;
       });
+
     });
 
     describe('when receiving an error response', function(){

@@ -47,8 +47,8 @@
                              .addClass('chimpaxifySuccess')
                              .slideDown(defaults.speed, defaults.easing);
 
-            // trigger the plugin's success callback with extra params
-            $form.trigger('chimpaxify:success');
+            // trigger the plugin's success callback with response as param
+            $form.trigger('chimpaxify:success', response);
           } else {
 
             // on error, show the error message with proper styling and animation

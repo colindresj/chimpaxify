@@ -1,8 +1,8 @@
-/*! chimpaxify - v0.3.2 - 2014-03-06
+/*! chimpaxify - v1.0.0 - 2014-03-11
 * https://github.com/corporadobob/chimpaxify
 * Copyright (c) 2014 JC; Licensed MIT */
 
-(function($) {
+;(function($) {
   $.fn.chimpaxify = function(options) {
     var $form, defaults, jsonUrl, $messageContainer;
 
@@ -17,7 +17,7 @@
       easing: 'swing',
       loader: true,
       successMessage: 'Success. A confirmation email has been sent your way.',
-      successCallback: function() {}
+      successCallback: $.noop()
     }, options);
 
     // adds the appropriate json formatting to the url
@@ -31,10 +31,9 @@
     $form.append($messageContainer);
 
     $form.on('submit', function(e) {
+      var dataSent = $(this).serialize();
       e.preventDefault();
 
-      // grab the data from the form and serialize it
-      var dataSent = $(this).serialize();
       $.ajax({
         contentType: 'application/json',
 
@@ -52,15 +51,15 @@
                              .addClass('chimpaxifySuccess')
                              .slideDown(defaults.speed, defaults.easing);
 
-            // trigger the plugin's callback
-            $form.trigger('chimpaxify:callback');
+            // trigger the plugin's success callback with response as param
+            $form.trigger('chimpaxify:success', response);
           } else {
 
             // on error, show the error message with proper styling and animation
             // using a simple regex to strip the error codes from the error message sent back from Mailchimp's
             // server so it all shows up nicely as text
-            $messageContainer.html(response.msg.replace(/\d -/, ''));
-            $messageContainer.removeClass('chimpaxifySuccess')
+            $messageContainer.html( response.msg.replace(/\d -/g, '') )
+                             .removeClass('chimpaxifySuccess')
                              .addClass('chimpaxifyError')
                              .slideDown(defaults.speed, defaults.easing);
           }
