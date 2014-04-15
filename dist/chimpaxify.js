@@ -1,5 +1,5 @@
 /*! chimpaxify - v1.0.0 - 2014-03-11
-* https://github.com/corporadobob/chimpaxify
+* https://github.com/colindresj/chimpaxify
 * Copyright (c) 2014 JC; Licensed MIT */
 
 ;(function($) {

@@ -2,10 +2,10 @@
   "name": "chimpaxify",
   "version": "1.0.0",
   "description": "a simple jquery plugin for submitting mailchimp forms with ajax",
-  "homepage": "https://github.com/corporadobob/chimpaxify",
+  "homepage": "https://github.com/colindresj/chimpaxify",
   "repository": {
     "type": "git",
-    "url": "git://github.com/corporadobob/chimpaxify.git"
+    "url": "git://github.com/colindresj/chimpaxify.git"
   },
   "author": {
     "name": "JC",
@@ -15,7 +15,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/corporadobob/chimpaxify/blob/master/license"
+      "url": "https://github.com/colindresj/chimpaxify/blob/master/license"
     }
   ],
   "engines": {
