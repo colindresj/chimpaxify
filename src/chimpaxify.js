@@ -1,6 +1,6 @@
-(function($) {
-  $.fn.chimpaxify = function(options) {
-    var $form, defaults, jsonUrl, $messageContainer;
+(function ($) {
+  $.fn.chimpaxify = function (options) {
+    var $form = this, defaults, jsonUrl, $messageContainer;
 
     $form = this;
     defaults = $.extend({
@@ -26,7 +26,7 @@
     $form.children('input[type=email]').attr('name', 'EMAIL');
     $form.append($messageContainer);
 
-    $form.on('submit', function(e) {
+    $form.on('submit', function (e) {
       var dataSent = $(this).serialize();
       e.preventDefault();
 
@@ -38,7 +38,7 @@
         url: jsonUrl,
         data: dataSent,
         timeout: defaults.timeOut,
-        success: function(response) {
+        success: function (response) {
           if (response.result === 'success') {
 
             // on success, show the success message with proper styling and animation
@@ -64,15 +64,15 @@
           $messageContainer.delay(defaults.delay)
                            .slideUp(defaults.speed, defaults.easing);
         },
-        error: function() {
+        error: function () {
           return false;
         },
-        beforeSend: function() {
+        beforeSend: function () {
           if (defaults.loader) {
             $form.addClass('chimpaxifyLoading');
           }
         },
-        complete: function() {
+        complete: function () {
           if (defaults.loader) {
             $form.removeClass('chimpaxifyLoading');
           }
