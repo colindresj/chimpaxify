@@ -1,7 +1,9 @@
 #Chimpaxify
-[![Build Status](https://travis-ci.org/colindresj/chimpaxify.svg?branch=master)](https://travis-ci.org/colindresj/chimpaxify)
+[![Build Status](https://travis-ci.org/colindresj/chimpaxify.svg?branch=master)]
+(https://travis-ci.org/colindresj/chimpaxify)
 
-Chimpaxify is a tiny (~1kb minified) jQuery plugin that uses Ajax to submit your MailChimp forms.
+Chimpaxify is a tiny (~1kb minified) jQuery plugin that uses Ajax to submit
+your MailChimp forms.
 
 Download the [production version][min] or the [development version][max].
 
@@ -10,14 +12,14 @@ Download the [production version][min] or the [development version][max].
 
 ##How to Use
 Simply include Chimpaxify on your page after jQuery:
-
 ```html
 <script src="jquery.js"></script>
 <script src="chimpaxify.min.js"></script>
 ```
 
-Download any of the forms from MailChimp, or create your own. If you decide to create your own form, make sure to have an input with type set to email. Then, simply call Chimpaxify onto your form using its ID selector:
-
+Download any of the forms from MailChimp, or create your own. If you decide to
+create your own form, make sure to have an input with type set to email. Then,
+simply call Chimpaxify onto your form using its ID selector:
 ```js
 $(function() {
   $('#foo').chimpaxify();
@@ -26,7 +28,6 @@ $(function() {
 
 
 A css stylesheet and loading gif are included. Add the stylesheet like so:
-
 ```html
 <link rel="stylesheet" href="chimpaxify.css">
 ```
@@ -89,15 +90,25 @@ Make sure you properly reference the location of the loading gif in your styles.
 	</tbody>
 </table>
 
-##Success Callback
-Chimpaxify can trigger a success callback that gives you added functionality for defining what occurs when a new contact has been added to your Mailchimp list.
+##Callbacks
+Chimpaxify can invoke success and error callbacks that give you added
+functionality for defining what occurs when a new contact has been added to
+your Mailchimp list, or a failed attempt has occured.
 
-To fire a success callback, you just have to set an event listener for `chimpaxify:success`, which is a custom event triggered by your form whenever a post is successfully made. In side the event hander, you'll have access to the jQuery event itself, as well as the Mailchimp response. Since Chimpaxify returns your form element, you can keep this concise by chaining `.on` to the end of the Chimpaxify method.
+Because the events are namespaced, you can choose to listen for `chimpaxify` or
+the individual events, `chimpaxify.success` and `chimpaxify.error`. Inside any
+event hander, you'll have access to the jQuery event itself, as well as the
+Mailchimp response.
 
+Since Chimpaxify returns your form element, you can keep this concise by
+chaining `.on` to the end of the Chimpaxify method.
 ```js
 $(function() {
-  $('#foo').chimpaxify().on('chimpaxify:success', function(e, response){
+  $('#foo').chimpaxify().on('chimpaxify', function(e, response){
     // your code here
   });
 });
 ```
+
+**Please not that these success and error events are fired depending on the
+  response received from Mailchimp. They are not related to the XHR object.**

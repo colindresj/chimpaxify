@@ -36,17 +36,28 @@ describe('jQuery.chimpaxify', function() {
     });
 
     it('should generate a message container', function(){
-      expect(this.$form.find('#chimpaxifyMessage')).to.exist;
+      expect( this.$form.find('#chimpaxifyMessage') ).to.exist;
     });
   });
 
   describe('when submitting the form', function(){
+    before(function(){
+      if ($.ajax == 'ajax') {
+        $.ajax.restore();
+      }
+
+      this.ajax = sinon.stub($, 'ajax');
+    });
+
+    it('should make an ajax call', function(){
+      this.$form.submit();
+
+      expect($.ajax).to.have.been.called;
+    });
+
     describe('when receiving a successful response', function(){
       before(function(){
-        if ($.ajax == 'ajax') {
-          $.ajax.restore();
-        }
-        sinon.stub($, 'ajax').yieldsTo('success', {
+        this.ajax.yieldsTo('success', {
           result: 'success'
         });
         this.cb = sinon.spy();
@@ -55,13 +66,9 @@ describe('jQuery.chimpaxify', function() {
       beforeEach(function() {
         this.$form.chimpaxify({
           url: 'http://google.com/post?'
-        }).on('chimpaxify:success', this.cb);
+        }).on('chimpaxify.success', this.cb);
 
         this.$form.submit();
-      });
-
-      it('should make an ajax cal', function(){
-        expect($.ajax).to.have.been.called;
       });
 
       it('should apply the correct classes to the message container', function(){
@@ -69,27 +76,24 @@ describe('jQuery.chimpaxify', function() {
         expect( $('#chimpaxifyMessage') ).not.to.have.class('chimpaxifyError');
       });
 
-      it('should trigger the callback', function(){
+      it('should call the success callback', function(){
         expect(this.cb).to.have.been.called;
       });
-
     });
 
     describe('when receiving an error response', function(){
       before(function(){
-        if ($.ajax == 'ajax') {
-          $.ajax.restore();
-        }
-        sinon.stub($, 'ajax').yieldsTo('success', {
+        this.ajax.yieldsTo('success', {
           result: 'error',
           msg: 'fake email'
         });
+        this.errorCb = sinon.spy();
       });
 
       beforeEach(function() {
         this.$form.chimpaxify({
           url: 'http://google.com/post?'
-        });
+        }).on('chimpaxify.error', this.cb);
 
         this.$form.submit();
       });
@@ -98,7 +102,10 @@ describe('jQuery.chimpaxify', function() {
         expect( $('#chimpaxifyMessage') ).to.have.class('chimpaxifyError');
         expect( $('#chimpaxifyMessage') ).not.to.have.class('chimpaxifySuccess');
       });
+
+      it('should call the error callback', function(){
+        expect(this.cb).to.have.been.called;
+      });
     });
   });
-
 });

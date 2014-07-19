@@ -1,8 +1,8 @@
-/*! chimpaxify - v1.0.0 - 2014-03-11
+/*! chimpaxify - v1.0.0 - 2014-07-19
 * https://github.com/colindresj/chimpaxify
 * Copyright (c) 2014 JC; Licensed MIT */
 
-;(function($) {
+(function($) {
   $.fn.chimpaxify = function(options) {
     var $form, defaults, jsonUrl, $messageContainer;
 
@@ -52,7 +52,7 @@
                              .slideDown(defaults.speed, defaults.easing);
 
             // trigger the plugin's success callback with response as param
-            $form.trigger('chimpaxify:success', response);
+            $form.trigger('chimpaxify.success', response);
           } else {
 
             // on error, show the error message with proper styling and animation
@@ -62,6 +62,8 @@
                              .removeClass('chimpaxifySuccess')
                              .addClass('chimpaxifyError')
                              .slideDown(defaults.speed, defaults.easing);
+
+            $form.trigger('chimpaxify.error', response);
           }
           $messageContainer.delay(defaults.delay)
                            .slideUp(defaults.speed, defaults.easing);
