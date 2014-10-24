@@ -61,13 +61,17 @@ describe('jQuery.chimpaxify', function() {
           result: 'success'
         });
 
-        this.cb = sinon.spy();
+        this.handler = sinon.spy();
+      });
+
+      after(function() {
+        this.handler.reset();
       });
 
       beforeEach(function() {
         this.$form.chimpaxify({
           url: 'http://google.com/post?'
-        }).on('chimpaxify.success', this.cb);
+        }).on('success.chimpaxify', this.handler);
 
         this.$form.submit();
       });
@@ -78,7 +82,7 @@ describe('jQuery.chimpaxify', function() {
       });
 
       it('should call the success callback', function() {
-        expect(this.cb).to.have.been.called;
+        expect(this.handler).to.have.been.called;
       });
     });
 
@@ -89,13 +93,17 @@ describe('jQuery.chimpaxify', function() {
           msg: 'fake email'
         });
 
-        this.errorCb = sinon.spy();
+        this.errorHandler = sinon.spy();
+      });
+
+      after(function() {
+        this.errorHandler.reset();
       });
 
       beforeEach(function() {
         this.$form.chimpaxify({
           url: 'http://google.com/post?'
-        }).on('chimpaxify.error', this.cb);
+        }).on('err.chimpaxify', this.errorHandler);
 
         this.$form.submit();
       });
@@ -106,7 +114,7 @@ describe('jQuery.chimpaxify', function() {
       });
 
       it('should call the error callback', function() {
-        expect(this.cb).to.have.been.called;
+        expect(this.errorHandler).to.have.been.called;
       });
     });
   });

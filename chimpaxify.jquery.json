@@ -2,7 +2,7 @@
   "name": "chimpaxify",
   "title": "Chimpaxify",
   "description": "A simple plugin for submitting mailchimp forms with ajax",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/colindresj/chimpaxify",
   "author": {
     "name": "JC",

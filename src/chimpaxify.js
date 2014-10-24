@@ -50,7 +50,7 @@
                              .slideDown(defaults.speed, defaults.easing);
 
             // trigger the plugin's success callback with response as param
-            $form.trigger('chimpaxify.success', response);
+            $form.trigger('success.chimpaxify', response);
           } else {
 
             // on error, show the error message with proper styling and
@@ -62,7 +62,7 @@
                              .addClass('chimpaxify-error')
                              .slideDown(defaults.speed, defaults.easing);
 
-            $form.trigger('chimpaxify.error', response);
+            $form.trigger('err.chimpaxify', response);
           }
 
           $messageContainer.delay(defaults.delay)
