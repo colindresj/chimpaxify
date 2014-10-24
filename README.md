@@ -90,14 +90,14 @@ Make sure you properly reference the location of the loading gif in your styles.
   </tbody>
 </table>
 
-##Callbacks
-Chimpaxify can invoke success and error callbacks that give you added
+##Events
+Chimpaxify triggers success and error events that give you added
 functionality for defining what occurs when a new contact has been added to
 your Mailchimp list, or a failed attempt has occured.
 
 Because the events are namespaced, you can choose to listen for `chimpaxify` or
-the individual events, `chimpaxify.success` and `chimpaxify.error`. Inside any
-event hander, you'll have access to the jQuery event itself, as well as the
+the individual events, `success.chimpaxify` and `err.chimpaxify`. Inside any
+event handler, you'll have access to the jQuery event itself, as well as the
 Mailchimp response.
 
 Since Chimpaxify returns your form element, you can keep this concise by
