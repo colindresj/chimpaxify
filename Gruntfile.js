@@ -1,5 +1,5 @@
-module.exports = function(grunt) {
-'use strict';
+module.exports = function (grunt) {
+  'use strict';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -12,9 +12,11 @@ module.exports = function(grunt) {
       files: ['spec/**/.spec.js', 'src/**/*.js'],
       tasks: ['test']
     },
+
     clean: {
       files: ['dist']
     },
+
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -25,9 +27,14 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       },
     },
+
     jshint: {
+      options: {
+        jshintrc: true
+      },
       all: ['Gruntfile.js', 'src/**/*.js', 'spec/**/*.js']
     },
+
     copy: {
       source: {
         files: [
@@ -42,15 +49,17 @@ module.exports = function(grunt) {
         ]
       }
     },
+
     mocha: {
       options: {
-        reporter: "Spec",
+        reporter: 'Spec',
         run: true
       },
       chimp: {
         src: ['tests/**/*.html']
       }
     },
+
     uglify: {
       dist: {
         files: {
@@ -70,5 +79,4 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'mocha']);
   grunt.registerTask('default', ['test', 'clean', 'concat', 'uglify', 'copy']);
-
 };
