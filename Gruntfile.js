@@ -29,38 +29,6 @@ module.exports = function(grunt) {
       all: ['Gruntfile.js', 'src/**/*.js', 'spec/**/*.js']
     },
     copy: {
-      vendors: {
-        files: [
-          {
-            src: 'bower_components/jquery/jquery.js',
-            dest: 'vendor/jquery/jquery.js'
-          }
-        ]
-      },
-      test: {
-        files: [
-          {
-            src: 'bower_components/mocha/mocha.js',
-            dest: 'tests/helpers/mocha.js'
-          },
-          {
-            src: 'bower_components/mocha/mocha.css',
-            dest: 'tests/helpers/mocha.css'
-          },
-          {
-            src: 'bower_components/chai/chai.js',
-            dest: 'tests/helpers/chai.js'
-          },
-          {
-            src: 'bower_components/chai-jquery/chai-jquery.js',
-            dest: 'tests/helpers/chai-jquery.js'
-          },
-          {
-            src: 'bower_components/sinon-chai/lib/sinon-chai.js',
-            dest: 'tests/helpers/sinon-chai.js'
-          }
-        ]
-      },
       source: {
         files: [
           {

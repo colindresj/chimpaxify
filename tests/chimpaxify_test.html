@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Example Mocha Test</title>
-    <link rel="stylesheet" href="helpers/mocha.css" type="text/css" charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Example Mocha Test</title>
+  <link rel="stylesheet" href="../bower_components/mocha/mocha.css" type="text/css">
 </head>
 <body>
-    <!-- Required for browser reporter -->
-    <div id="mocha"></div>
+  <div id="mocha"></div>
 
-    <form id="testForm" action="#" method="post" style="visibility:hidden">
-      <input type="email">
-      <input type="submit">
-    </form>
+  <form id="testForm" action="#" method="post" style="visibility:hidden">
+    <input type="email">
+    <input type="submit">
+  </form>
 
-    <!-- mocha -->
-    <script src="helpers/mocha.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" charset="utf-8">
-        // This will be overridden by mocha-helper if you run with grunt
-        mocha.setup('bdd');
-    </script>
-    <script src="../vendor/jquery/jquery.js"></script>
+  <!-- mocha -->
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <script>
+      // This will be overridden by mocha-helper if you run with grunt
+      mocha.setup('bdd');
+  </script>
+  <script src="../bower_components/jquery/jquery.js"></script>
 
-    <!--
-         IMPORTANT
-         If you do not want to set the `run` option to `true` for some reason
-         and are not using AMD, you must include the bridge.js file
-         in the `phantomjs` folder after you include `mocha.js`
-    <script src="../../phantomjs/bridge.js" type="text/javascript" charset="utf-8"></script>
-    -->
+  <!--
+       IMPORTANT
+       If you do not want to set the `run` option to `true` for some reason
+       and are not using AMD, you must include the bridge.js file
+       in the `phantomjs` folder after you include `mocha.js`
+  <script src="../../phantomjs/bridge.js" type="text/javascript" charset="utf-8"></script>
+  -->
 
-    <!-- Include your assertion lib of choice -->
-    <script src="helpers/chai.js" type="text/javascript" charset="utf-8"></script>
-    <script src="helpers/chai-jquery.js" type="text/javascript" charset="utf-8"></script>
+  <!-- Include your assertion lib of choice -->
+  <script src="../bower_components/chai/chai.js"></script>
+  <script src="../bower_components/chai-jquery/chai-jquery.js"></script>
 
-    <script type="text/javascript" charset="utf-8">
-        // Setup chai
-        var expect = chai.expect;
-    </script>
+  <script>
+      // Setup chai
+      var expect = chai.expect;
+  </script>
 
-    <script src="helpers/sinon.js"></script>
+  <script src="../bower_components/sinonjs/sinon.js"></script>
+  <script src="../bower_components/sinon-chai/lib/sinon-chai.js"></script>
 
-    <script src="helpers/sinon-chai.js" type="text/javascript" charset="utf-8"></script>
+  <!-- Include anything you want to test -->
+  <script src="../src/chimpaxify.js"></script>
 
-    <!-- Include anything you want to test -->
-    <script src="../src/chimpaxify.js" type="text/javascript" charset="utf-8"></script>
+  <!-- Spec files -->
+  <script src="specs/chimpaxify_test.js"></script>
 
-    <!-- Spec files -->
-    <script src="specs/chimpaxify_test.js" type="text/javascript" charset="utf-8"></script>
-
-    <!-- run mocha -->
-    <script type="text/javascript" charset="utf-8">
-        mocha.run();
-    </script>
+  <!-- run mocha -->
+  <script>
+      mocha.run();
+  </script>
 </body>
 </html>
